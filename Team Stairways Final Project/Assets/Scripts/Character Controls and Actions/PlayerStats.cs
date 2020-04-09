@@ -33,6 +33,26 @@ public class PlayerStats : MonoBehaviour
         {
             playerHealth += 1;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            equipmentDisplay.ChangeCurrentEquip(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            equipmentDisplay.ChangeCurrentEquip(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            equipmentDisplay.ChangeCurrentEquip(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            equipmentDisplay.ChangeCurrentEquip(4);
+        }
+
+
+
     }
 
     //Static function for adding health to the player (send it negative value to subtract health)
