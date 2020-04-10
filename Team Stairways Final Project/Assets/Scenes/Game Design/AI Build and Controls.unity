@@ -542,20 +542,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4187579150834230793, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f2a34fd6682d17b429e38906c375e7ab, type: 2}
     - target: {fileID: 4187579150834230796, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
         type: 3}
       propertyPath: m_Name
       value: Enemy Stand-in
-      objectReference: {fileID: 0}
-    - target: {fileID: 4187579150834230796, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4187579150834230903, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
         type: 3}
@@ -610,6 +600,11 @@ PrefabInstance:
     - target: {fileID: 4187579150834230903, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187579151565331770, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
+        type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

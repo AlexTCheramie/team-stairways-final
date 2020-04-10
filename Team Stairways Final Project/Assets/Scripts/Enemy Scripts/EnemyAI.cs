@@ -33,8 +33,8 @@ public class EnemyAI : MonoBehaviour
     public int enemyHealth = 3;
 
     //Particle Sys. Explosion and blood spatter
-    ParticleSystem explosion;
-    bool explosionStarted = false;     //says whether the explosion has started or not (prevents repeats)
+    ParticleSystem blood;
+    bool spatterStarted = false;     //says whether the explosion has started or not (prevents repeats)
     
     //EnemyShoot firePoint;
 
@@ -53,7 +53,7 @@ public class EnemyAI : MonoBehaviour
         
         agent = this.GetComponent<NavMeshAgent>();  //gets the NavMeshAgent component
 
-        explosion = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
+        blood = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
     }
 
     //creates a random position for the enemy to be in or go to
@@ -231,10 +231,10 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
     private void StartExplosion()
     {
-        if (explosionStarted == false)
+        if (spatterStarted == false)
         {
-            explosion.Play();
-            explosionStarted = true;
+            blood.Play();
+            spatterStarted = true;
         }
     }
 
@@ -243,9 +243,9 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
     private void StopExplosion()
     {
-        explosionStarted = false;
-        explosion.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        //explosion.Stop();
+        spatterStarted = false;
+        blood.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        blood.Stop();
     }
 
     private void OnDrawGizmosSelected()
