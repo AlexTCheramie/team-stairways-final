@@ -36,10 +36,10 @@ public class EnemyAI : MonoBehaviour
     ParticleSystem blood;
     bool spatterStarted = false;     //says whether the explosion has started or not (prevents repeats)
     
-    //EnemyShoot firePoint;
 
-    public float shootTime = 1.0f;
-    public float reloadTime = 1.0f;
+    Bat_Bite mouth;
+    public float biteTime = 1.0f;
+    public float chewTime = 1.0f;
 
     public int killCount = 0;
 
@@ -157,11 +157,11 @@ public class EnemyAI : MonoBehaviour
                     //firePoint.shoot = false;
                 }
 
-                if (Time.time > shootTime)
+                if (Time.time > biteTime)
                 {
                     //FindObjectOfType<AudioManager>().Play("blaster SFX");
                     //firePoint.FireBullet();
-                    shootTime = Time.time + reloadTime;
+                    biteTime = Time.time + chewTime;
                 }
                 FaceTarget();
                 agent.SetDestination(player.transform.position);
@@ -213,7 +213,7 @@ public class EnemyAI : MonoBehaviour
                 //gameObject.GetComponent<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
                 gameObject.GetComponentInChildren<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
                 StartExplosion();   //makes explosion occur when the enemy is hit
-                StartCoroutine(PlayAndDestroy(reloadTime));
+                StartCoroutine(PlayAndDestroy(chewTime));
             }
         }
     }
