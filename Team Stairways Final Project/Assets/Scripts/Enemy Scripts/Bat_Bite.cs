@@ -12,6 +12,7 @@ public class Bat_Bite : MonoBehaviour
     void Start()
     {
         chomp = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
