@@ -3,30 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;     //enables the project to use Unity AI library
 
-/// <summary>
-/// The following script is derived from the enemy script given from 
-/// CMPS 327 and the Star Wars game
-/// </summary>
-
-//FSM States for the enemy
-public enum Enemy1State { CHASE, MOVING, DEFAULT, ATTACK};
-//Default - init state (when it is not moving)
-//other states will be based on the player's rotation/movement
 
 /// <summary>
-/// EnemyAI ...
+/// The following script is very similar to the standard EnemyAI.cs script,
+/// but is designed specifically for the bear boss.
 /// </summary>
-/// 
-[RequireComponent(typeof(NavMeshAgent))]
-public class EnemyAI : MonoBehaviour
+
+public enum Enemy2State { CHASE, MOVING, DEFAULT, ATTACK };
+public class BearAI : MonoBehaviour
 {
     GameObject player;  //the player
     NavMeshAgent agent; //used to move along the navmesh
-    
+
     public float chaseDistance = 20.0f; //distance the enemy must be before it chases the player
     public float attackDistance = 15.0f; //distance the enemy must be before it attacks the player
 
-    protected Enemy1State state = Enemy1State.DEFAULT;    //init state in FSM is Default
+    protected Enemy2State state = Enemy2State.DEFAULT;    //init state in FSM is Default
     protected Vector3 destination = new Vector3(0, 0, 0);   //initial destination is the zero vector
 
 
@@ -35,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     //Particle Sys. Explosion and blood spatter
     ParticleSystem explosion;
     bool explosionStarted = false;     //says whether the explosion has started or not (prevents repeats)
-    
+
     //EnemyShoot firePoint;
 
     public float shootTime = 1.0f;
@@ -50,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         //assigns anything with the tag "Player" in the scene to the object "player"
 
         //firePoint = gameObject.GetComponentInChildren<EnemyShoot>() ;
-        
+
         agent = this.GetComponent<NavMeshAgent>();  //gets the NavMeshAgent component
 
         explosion = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
@@ -77,63 +69,63 @@ public class EnemyAI : MonoBehaviour
         switch (state)
         {
             //starts in the default state
-            case Enemy1State.DEFAULT:
+            case Enemy2State.DEFAULT:
                 destination = transform.position + RandomPosition();
                 //add a random position to the enemy's position that the enemy will move to
 
                 //if the player is less than the "chaseDistance" from the enemy, switch to the "CHASE" state
                 if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance)
                 {
-                    state = Enemy1State.CHASE;
+                    state = Enemy2State.CHASE;
                 }
                 else    //move the enemy randomly if the enemy is too far from the enemy
                 {
-                    
-                    state = Enemy1State.MOVING;
+
+                    state = Enemy2State.MOVING;
                     agent.SetDestination(destination);  //destination will be a random location
                 }
 
                 if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
                 {
-                    state = Enemy1State.ATTACK;
+                    state = Enemy2State.ATTACK;
                 }
                 break;
             //Moving state controls random movement
-            case Enemy1State.MOVING:
+            case Enemy2State.MOVING:
                 //Debug.Log("Dest = " + destination);
                 //when enemy is < 5 from the random distance, change destination again (done in Default state)
                 if (Vector3.Distance(transform.position, destination) < 5)
                 {
-                    state = Enemy1State.DEFAULT;
+                    state = Enemy2State.DEFAULT;
                     //firePoint.shoot = false;
                 }
                 //if the enemy gets close enough to the player, switch to the chase state and chase the player
                 if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance)
                 {
-                    state = Enemy1State.CHASE;
+                    state = Enemy2State.CHASE;
                     //firePoint.shoot = false;
                 }
-                
+
                 if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
                 {
-                    state = Enemy1State.ATTACK;
+                    state = Enemy2State.ATTACK;
                     //firePoint.shoot = true;
                 }
                 break;
             //state that chases the player
-            case Enemy1State.CHASE:
+            case Enemy2State.CHASE:
                 //FindObjectOfType<AudioManager>().Play("chase");
                 //if the distance b/w the enemy and player exceeds the chase distance, switch to Default state
                 if (Vector3.Distance(transform.position, player.transform.position) > chaseDistance)
                 {
                     //FindObjectOfType<AudioManager>().Play("lost");
-                    state = Enemy1State.DEFAULT;
+                    state = Enemy2State.DEFAULT;
                     //firePoint.shoot = false;
                 }
 
-                if(Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
+                if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
                 {
-                    state = Enemy1State.ATTACK;
+                    state = Enemy2State.ATTACK;
                     //firePoint.shoot = true;
                 }
                 FaceTarget();
@@ -141,19 +133,19 @@ public class EnemyAI : MonoBehaviour
 
                 break;
             //state where the enemy attacks the player
-            case Enemy1State.ATTACK:
+            case Enemy2State.ATTACK:
                 //FindObjectOfType<AudioManager>().Play("shoot");
 
                 if (Vector3.Distance(transform.position, player.transform.position) > attackDistance)
                 {
                     //FindObjectOfType<AudioManager>().Play("get back");
-                    state = Enemy1State.CHASE;
+                    state = Enemy2State.CHASE;
                     //firePoint.shoot = false;
                 }
 
                 if (Vector3.Distance(transform.position, player.transform.position) > chaseDistance)
                 {
-                    state = Enemy1State.DEFAULT;
+                    state = Enemy2State.DEFAULT;
                     //firePoint.shoot = false;
                 }
 
@@ -165,12 +157,13 @@ public class EnemyAI : MonoBehaviour
                 }
                 FaceTarget();
                 agent.SetDestination(player.transform.position);
-                
-                    break;
+
+                break;
             default:
                 break;
         }
     }
+
 
     /// <summary>
     /// this enables the player to take damage from bullets, 
@@ -187,24 +180,24 @@ public class EnemyAI : MonoBehaviour
             {
                 //FindObjectOfType<AudioManager>().Play("ST2hitleft");
             }
-            if(enemyHealth == 1)
+            if (enemyHealth == 1)
             {
                 //FindObjectOfType<AudioManager>().Play("ST1hitleft");
             }
-            
 
-            if(enemyHealth <= 0)
+
+            if (enemyHealth <= 0)
             {
                 killCount++;
                 //energy.addScore(10);
 
                 //EnemyShoot[] allShots = gameObject.GetComponentsInChildren<EnemyShoot>();
                 //foreach (EnemyShoot c in allShots) c.enabled = false;
-                
+
                 // Disable all Renderers and Colliders
                 Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
                 foreach (Renderer c in allRenderers) c.enabled = false;
-            
+
                 Collider[] allColliders = gameObject.GetComponentsInChildren<Collider>();
                 foreach (Collider c in allColliders) c.enabled = false;
 
