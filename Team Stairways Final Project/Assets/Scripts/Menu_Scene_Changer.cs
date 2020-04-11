@@ -50,6 +50,10 @@ public class Menu_Scene_Changer : MonoBehaviour
         SceneManager.LoadScene("Player Select");
     }
 
+    public void DemoScene()
+    {
+        SceneManager.LoadScene("AI Build and Controls");
+    }
 
     /// <summary>
     /// 
