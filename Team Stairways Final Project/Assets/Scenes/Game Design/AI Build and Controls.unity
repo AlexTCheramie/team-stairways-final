@@ -380,28 +380,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1151085491 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2897441482048272145, guid: a196624d01ddd084d80c6aa02171b77d,
-    type: 3}
-  m_PrefabInstance: {fileID: 211539923}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1151085500
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151085491}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1001 &4187579151565331767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,25 +387,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267147092, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.138
+      objectReference: {fileID: 0}
     - target: {fileID: 267147093, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Radius
+      value: 0.19406855
       objectReference: {fileID: 0}
-    - target: {fileID: 298480492, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b8eb85fa783b28147998874be44d9a24, type: 3}
-    - target: {fileID: 298480492, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+    - target: {fileID: 267147093, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
+      propertyPath: m_Center.y
+      value: 0.16041017
       objectReference: {fileID: 0}
-    - target: {fileID: 298480492, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
-      propertyPath: BypassListenerEffects
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1141688386, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
+    - target: {fileID: 267147093, guid: 3c8a8b2db4416ac49b30a6b6f735fdee, type: 3}
+      propertyPath: m_Center.z
+      value: 0.14552128
       objectReference: {fileID: 0}
     - target: {fileID: 4187579150834230796, guid: 3c8a8b2db4416ac49b30a6b6f735fdee,
         type: 3}

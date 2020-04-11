@@ -6,19 +6,14 @@ using UnityEngine;
 public class Bat_Bite : MonoBehaviour
 {
     AudioSource chomp;
-
+    float biteTime = 2.0f;
+    float chewTime = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         chomp = GetComponent<AudioSource>();
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Bite();   //bite animation
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,12 +25,12 @@ public class Bat_Bite : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// This is the animation function
-    /// </summary>
-    void Bite()
+    /*private void OnTriggerStay(Collider other)
     {
-
-    }
+        if (other.tag == "Player")
+        {
+            chomp.Play();
+            PlayerStats.playerHealth--;
+        }
+    }*/
 }

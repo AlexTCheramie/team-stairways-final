@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class PlayerStats : MonoBehaviour
         if (playerHealth > maxHealth)
         {
             playerHealth = maxHealth;
+        }
+
+        if(playerHealth <= 0)
+        {
+            SceneManager.LoadScene("Dead Screen");
         }
 
         //HP Stuff for Testing
