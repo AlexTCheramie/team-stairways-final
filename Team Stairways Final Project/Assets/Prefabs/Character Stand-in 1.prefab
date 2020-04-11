@@ -2064,7 +2064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2897441481841480103
 Transform:
   m_ObjectHideFlags: 0
@@ -2180,6 +2180,7 @@ Transform:
   - {fileID: 2897441481434598864}
   - {fileID: 2897441481522856097}
   - {fileID: 248857137}
+  - {fileID: 5006512735874900887}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2198,7 +2199,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2897441482048272145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2241,9 +2242,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.9582272
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.28518677, z: 0}
 --- !u!114 &2897441482048272144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2396,3 +2397,78 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2897441482960244438}
   m_Enabled: 1
+--- !u!1001 &6145892583684287303
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2897441482048272140}
+    m_Modifications:
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768435761319099075, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_Name
+      value: The Adventurer Blake
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b51a4f91dd53d34183719fbb20d4102, type: 3}
+--- !u!4 &5006512735874900887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
+    type: 3}
+  m_PrefabInstance: {fileID: 6145892583684287303}
+  m_PrefabAsset: {fileID: 0}
