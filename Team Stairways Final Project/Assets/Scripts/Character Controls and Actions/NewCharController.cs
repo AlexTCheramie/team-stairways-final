@@ -36,7 +36,7 @@ public class NewCharController : MonoBehaviour
     }
 
     /// <summary>
-    /// CharacterMovement provides the character with basic movement controls
+    /// CharacterMovement provides the character with basic movement controls (these are the DOOM controls)
     /// </summary>
     void CharacterMovement() {
         float x = Input.GetAxis("Horizontal");  //access the horizontal keys (left, right, a, d)
@@ -52,6 +52,11 @@ public class NewCharController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// These are the Survival shooter controls (need to be changed)
+    /// </summary>
+    /// <param name="h"></param>
+    /// <param name="v"></param>
     void newCharacterMovement(float h, float v) {
         movement.Set(h, 0f, v);
         movement = movement.normalized * speed * Time.deltaTime;
