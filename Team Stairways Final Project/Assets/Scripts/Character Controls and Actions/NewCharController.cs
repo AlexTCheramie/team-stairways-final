@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// This is a simple character control script - 4/7/20
-/// </summary>
-public class Character_Movement : MonoBehaviour
+public class NewCharController : MonoBehaviour
 {
+
     Rigidbody playerRigidbody;
     public float speed = 10;
     Vector3 movement;
@@ -14,26 +12,22 @@ public class Character_Movement : MonoBehaviour
     private float camRayLength = 100;
 
 
-    private void Awake()
-    {
-        playerRigidbody = GetComponent <Rigidbody>();
+    private void Awake() {
+        playerRigidbody = GetComponent<Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //CharacterMovement();    //enables the character to have simple motions
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         newCharacterMovement(h, v);
@@ -44,8 +38,7 @@ public class Character_Movement : MonoBehaviour
     /// <summary>
     /// CharacterMovement provides the character with basic movement controls
     /// </summary>
-    void CharacterMovement()
-    {
+    void CharacterMovement() {
         float x = Input.GetAxis("Horizontal");  //access the horizontal keys (left, right, a, d)
         float z = Input.GetAxis("Vertical");    //access the vertical keys (up, down, w, s)
 
@@ -59,15 +52,13 @@ public class Character_Movement : MonoBehaviour
 
     }
 
-    void newCharacterMovement(float h, float v)
-    {
+    void newCharacterMovement(float h, float v) {
         movement.Set(h, 0f, v);
         movement = movement.normalized * speed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
     }
 
-    void followMouse()
-    {
+    void followMouse() {
         /*Ray camray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorhit;
         if (Physics.Raycast(camray, out floorhit, camRayLength, floorMask))
