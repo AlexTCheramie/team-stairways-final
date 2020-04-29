@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         //HP Stuff for Testing
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             playerHealth -= 1;
         }
@@ -57,7 +57,7 @@ public class PlayerStats : MonoBehaviour
         {
             equipmentDisplay.ChangeCurrentEquip(4);
         }
-        */
+        
 
     }
 
