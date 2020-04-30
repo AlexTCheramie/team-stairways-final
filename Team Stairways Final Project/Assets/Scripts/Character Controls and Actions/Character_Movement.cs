@@ -68,7 +68,7 @@ public class Character_Movement : MonoBehaviour
 
     void followMouse()
     {
-        /*Ray camray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray camray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorhit;
         if (Physics.Raycast(camray, out floorhit, camRayLength, floorMask))
         {
@@ -76,13 +76,7 @@ public class Character_Movement : MonoBehaviour
             playerToMouse.y = 0;
             Quaternion newrot = Quaternion.LookRotation(playerToMouse);
             playerRigidbody.MoveRotation(newrot);
-        }*/
-
-        Vector3 camPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 playerToMouse = camPos - transform.position;
-        playerToMouse.y = 0;
-        Quaternion newrot = Quaternion.LookRotation(playerToMouse);
-        playerRigidbody.MoveRotation(newrot);
+        }
 
 
     }
