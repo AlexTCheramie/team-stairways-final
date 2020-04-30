@@ -2405,6 +2405,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2897441482048272140}
     m_Modifications:
+    - target: {fileID: 854225403605661828, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.030869754
+      objectReference: {fileID: 0}
+    - target: {fileID: 854225403605661828, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.1292529
+      objectReference: {fileID: 0}
     - target: {fileID: 1166481166652360912, guid: 5b51a4f91dd53d34183719fbb20d4102,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2464,6 +2474,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The Adventurer Blake
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601753652759529819, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.030869791
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601753652759529819, guid: 5b51a4f91dd53d34183719fbb20d4102,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.12925293
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b51a4f91dd53d34183719fbb20d4102, type: 3}
