@@ -13,7 +13,10 @@ public class Character_Movement : MonoBehaviour
     int floorMask;
     private float camRayLength = 100;
 
+    //[SerializeField] private InventoryHelp UI_inventory;
     [SerializeField] private equipmentDisplay UI_Weapons;
+    private InventoryHelp inventory;
+    //private Weapons equipedWeapons;
 
     Animator charAnimations;
 
@@ -22,7 +25,10 @@ public class Character_Movement : MonoBehaviour
         playerRigidbody = GetComponent <Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
         charAnimations = GetComponentInChildren<Animator>();
-        
+
+        //inventory code
+        inventory = new InventoryHelp();
+        UI_Weapons.SetInventory(inventory);
     }
 
     private void FixedUpdate()

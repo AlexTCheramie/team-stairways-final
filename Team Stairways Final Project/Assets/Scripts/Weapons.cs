@@ -15,5 +15,5 @@ public class Weapons {
     }
 
     public WeaponType equipedWeapon;
-    //public int amount; //not really needed here
+    public int amount = 1; //not really needed here? (used to be safe to follow the video)
 }

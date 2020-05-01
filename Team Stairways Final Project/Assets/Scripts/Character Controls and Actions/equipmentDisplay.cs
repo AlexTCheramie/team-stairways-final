@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//this is the UI_Inventory (the displayed inventory found in the video link below)
 public class equipmentDisplay : MonoBehaviour
 {
     public Image[] equipment;
-    //public Sprite equip1;
-    //public Sprite equip2;
-    //public Sprite equip3;
-    //public Sprite equip4;
+    public Sprite equip1;       //sword pic
+    public Sprite equip2;       //gun pic
+    public Sprite equip3;       //robot arms pic
+    public Sprite equip4;       //wand pic
 
     public static int currentEquip;
 
 
-    //for the inventory
-    private Weapons _weapons;
+    //for the inventory code below: https://www.youtube.com/watch?v=2WnAOV7nHW0&t=330s
+    private InventoryHelp inventoryHelp;
 
-    public void SetWeapons(Weapons weapons) {
-        this._weapons = weapons;
+    public void SetInventory(InventoryHelp inventory) {
+        this.inventoryHelp = inventory;
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         
     }
@@ -51,4 +53,11 @@ public class equipmentDisplay : MonoBehaviour
             currentEquip = val;
         }
     }
+
+    //not sure if we need this
+    /*private void RefreshInventory() {
+        foreach(Weapons weaponIn in inventoryHelp.GetWeaponsList()) {
+            
+        }
+    }*/
 }

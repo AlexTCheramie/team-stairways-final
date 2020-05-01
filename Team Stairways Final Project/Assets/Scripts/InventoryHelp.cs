@@ -12,11 +12,18 @@ public class InventoryHelp {
 
     public InventoryHelp() {
         weapons = new List<Weapons>();
-
-        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.Gun});
+        //below are the items that will be preloaded into our inventory
+        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.Gun, amount = 1});
+        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.Sword, amount = 1});
+        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.Wand, amount = 1});
+        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.RobotArms, amount = 1});
     }
 
     public void AddWeapon(Weapons _weapon) {
         weapons.Add(_weapon);
+    }
+
+    public List<Weapons> GetWeaponsList() {
+        return weapons;
     }
 }
