@@ -9,4 +9,14 @@ using UnityEngine;
 //this is a simple class, so no monobehavior elements
 public class InventoryHelp {    
     private List<Weapons> weapons;
+
+    public InventoryHelp() {
+        weapons = new List<Weapons>();
+
+        AddWeapon(new Weapons { equipedWeapon = Weapons.WeaponType.Gun});
+    }
+
+    public void AddWeapon(Weapons _weapon) {
+        weapons.Add(_weapon);
+    }
 }

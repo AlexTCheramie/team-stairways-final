@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 
 public class Weapons {
-    public enum WeapnType {
+    public enum WeaponType {
         Sword,
         Gun,
         Wand,
         RobotArms
     }
 
-    public WeapnType equipedWeapon;
+    public WeaponType equipedWeapon;
     //public int amount; //not really needed here
 }

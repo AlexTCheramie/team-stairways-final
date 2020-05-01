@@ -13,6 +13,14 @@ public class equipmentDisplay : MonoBehaviour
 
     public static int currentEquip;
 
+
+    //for the inventory
+    private Weapons _weapons;
+
+    public void SetWeapons(Weapons weapons) {
+        this._weapons = weapons;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

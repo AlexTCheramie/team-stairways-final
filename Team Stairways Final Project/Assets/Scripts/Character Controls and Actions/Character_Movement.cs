@@ -13,6 +13,8 @@ public class Character_Movement : MonoBehaviour
     int floorMask;
     private float camRayLength = 100;
 
+    [SerializeField] private equipmentDisplay UI_Weapons;
+
 
     private void Awake()
     {
