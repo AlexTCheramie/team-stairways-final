@@ -87,8 +87,18 @@ public class Character_Movement : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("")) {
-            SceneManager.LoadScene("");
+        if (other.gameObject.CompareTag("RoomGreen")) {
+            SceneManager.LoadScene("Entry Level G");
+        }else if (other.gameObject.CompareTag("RoomRed")) {
+            SceneManager.LoadScene("Entry Level R");
+        } else if (other.gameObject.CompareTag("RoomBlue")) {
+            SceneManager.LoadScene("Entry Level B");
+        } else if (other.gameObject.CompareTag("RoomYellow")) {
+            SceneManager.LoadScene("Entry Level Y");
+        } else if (other.gameObject.CompareTag("RoomBoss")) {
+            SceneManager.LoadScene("Boss Room");
+        } else if (other.gameObject.CompareTag("RoomBonus")) {
+            SceneManager.LoadScene("Bonus Room");
         }
     }
 }
