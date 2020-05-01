@@ -79,15 +79,12 @@ public class Character_Movement : MonoBehaviour
             Quaternion newrot = Quaternion.LookRotation(playerToMouse);
             playerRigidbody.MoveRotation(newrot);
         }
-<<<<<<< HEAD
-=======
 
         /*Vector3 camPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         Vector3 playerToMouse = camPos - transform.position;
         playerToMouse.y = 0;
         Quaternion newrot = Quaternion.LookRotation(playerToMouse);
         playerRigidbody.MoveRotation(newrot);*/
->>>>>>> AI_Controls
 
 
     }
