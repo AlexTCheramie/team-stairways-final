@@ -1169,7 +1169,7 @@ MonoBehaviour:
   helpMenu: {fileID: 1694349128}
   creditScreen: {fileID: 1451932182}
   timer: 0
-  creditLength: 30
+  creditLength: 45
 --- !u!82 &991339600
 AudioSource:
   m_ObjectHideFlags: 0
