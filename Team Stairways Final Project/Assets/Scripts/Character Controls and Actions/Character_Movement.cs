@@ -15,23 +15,14 @@ public class Character_Movement : MonoBehaviour
 
     [SerializeField] private equipmentDisplay UI_Weapons;
 
+    Animator charAnimations;
 
     private void Awake()
     {
         playerRigidbody = GetComponent <Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //CharacterMovement();    //enables the character to have simple motions
+        charAnimations = GetComponentInChildren<Animator>();
+        
     }
 
     private void FixedUpdate()
@@ -40,6 +31,7 @@ public class Character_Movement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         newCharacterMovement(h, v);
         followMouse();
+        
 
     }
 
@@ -58,7 +50,6 @@ public class Character_Movement : MonoBehaviour
         transform.position += transform.forward * z * moveSpeed * Time.deltaTime;
 
         transform.Rotate(turnVelocity); //rotates the player left and right
-
     }
 
     void newCharacterMovement(float h, float v)
@@ -66,6 +57,7 @@ public class Character_Movement : MonoBehaviour
         movement.Set(h, 0f, v);
         movement = movement.normalized * speed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
+        CharAnim(h, v); 
     }
 
     void followMouse()
@@ -80,12 +72,10 @@ public class Character_Movement : MonoBehaviour
             playerRigidbody.MoveRotation(newrot);
         }
 
-        /*Vector3 camPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 playerToMouse = camPos - transform.position;
-        playerToMouse.y = 0;
-        Quaternion newrot = Quaternion.LookRotation(playerToMouse);
-        playerRigidbody.MoveRotation(newrot);*/
+    }
 
-
+    void CharAnim(float h, float v) {
+        bool runnning = h != 0f || v != 0f;
+        charAnimations.SetBool("",runnning);
     }
 }
