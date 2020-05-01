@@ -7,6 +7,12 @@ TagManager:
   - Button
   - Trap
   - Floor
+  - RoomGreen
+  - RoomBlue
+  - RoomRed
+  - RoomYellow
+  - RoomBoss
+  - RoomBonus
   layers:
   - Default
   - TransparentFX

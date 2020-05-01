@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This is a simple character control script - 4/7/20
@@ -82,6 +83,12 @@ public class Character_Movement : MonoBehaviour
 
     void CharAnim(float h, float v) {
         bool runnning = h != 0f || v != 0f;
-        charAnimations.SetBool("",runnning);
+        charAnimations.SetBool("isRunning",runnning);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("")) {
+            SceneManager.LoadScene("");
+        }
     }
 }
