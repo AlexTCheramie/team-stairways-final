@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
     //Make the cursor invisible, remove the pause menu UI, resume time
     public void Resume()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;

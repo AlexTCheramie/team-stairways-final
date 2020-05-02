@@ -47,7 +47,7 @@ public class Menu_Scene_Changer : MonoBehaviour
 
     public void PlayerSelect()
     {
-        SceneManager.LoadScene("Player Select");
+        SceneManager.LoadScene("Floor One");
     }
 
     public void DemoScene()
@@ -70,6 +70,7 @@ public class Menu_Scene_Changer : MonoBehaviour
     public void StartScreen()
     {
         //energy.playerScore = 0;
-        SceneManager.LoadScene("Start Screen");
+        SceneManager.LoadScene("Start Screen 2");
+        Time.timeScale = 1f;
     }
 }
