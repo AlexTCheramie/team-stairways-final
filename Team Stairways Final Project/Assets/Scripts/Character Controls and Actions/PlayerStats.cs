@@ -107,7 +107,7 @@ public class PlayerStats : MonoBehaviour
             Attack();
         }
 
-        if (playerInGun)
+        if (playerInGun && hasGun == false)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -122,7 +122,7 @@ public class PlayerStats : MonoBehaviour
             }
 
         }
-        if (playerInSword)
+        if (playerInSword && hasSword == false)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
