@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 
         if(playerHealth <= 0)
         {
-            SceneManager.LoadScene("Dead Screen");
+            SceneManager.LoadScene("Dead Screen 2");
         }
 
         //HP Stuff for Testing
