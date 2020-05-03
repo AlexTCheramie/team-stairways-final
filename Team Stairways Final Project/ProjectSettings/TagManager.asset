@@ -13,7 +13,6 @@ TagManager:
   - RoomYellow
   - RoomBoss
   - RoomBonus
-  - PlayerAtk
   layers:
   - Default
   - TransparentFX
