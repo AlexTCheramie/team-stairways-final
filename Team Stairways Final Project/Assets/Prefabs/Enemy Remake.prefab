@@ -71,7 +71,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a06cbec127ed3af42bf6e13078dffafd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4964,8 +4964,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6809945, y: 0.24830747, z: 0.95790815}
-  m_Center: {x: 0.046084166, y: 0.27816713, z: 0.12613332}
+  m_Size: {x: 3.684681, y: 2.14, z: 1.31}
+  m_Center: {x: 0, y: 0.24, z: 0.07}
 --- !u!1001 &7742792756955514135
 PrefabInstance:
   m_ObjectHideFlags: 0
