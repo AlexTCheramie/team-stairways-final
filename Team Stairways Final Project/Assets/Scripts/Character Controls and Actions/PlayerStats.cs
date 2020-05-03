@@ -9,9 +9,16 @@ public class PlayerStats : MonoBehaviour
 {
     public static int maxHealth = 3;
     public static int playerHealth;
-    public static bool hasGun = true;
-    public static bool hasSword = true;
+    public static bool hasGun = false;
+    public static bool hasSword = false;
     public static bool isAttacking = false;
+    public bool playerInSword = false;
+    public bool playerInGun = false;
+
+    public GameObject swordGround;
+    public GameObject gunGround;
+
+    private static bool isInvincible = false;
 
     public GameObject sword;
     public GameObject gun;
@@ -25,11 +32,25 @@ public class PlayerStats : MonoBehaviour
     {
         //Player spawn with full HP
         playerHealth = maxHealth;
-    }
+        isInvincible = false;
+        hasGun = false;
+        hasSword = false;
+        playerInSword = false;
+        playerInGun = false;
+}
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (!isInvincible)
+            {
+                isInvincible = true;
+                print("IM INVINCIBLE");
+            }
+        }
+
         //Make sure the player's HP does not go higher than wanted
         if (playerHealth > maxHealth)
         {
@@ -42,14 +63,14 @@ public class PlayerStats : MonoBehaviour
         }
 
         //HP Stuff for Testing
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             playerHealth -= 1;
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
             playerHealth += 1;
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -86,12 +107,51 @@ public class PlayerStats : MonoBehaviour
             Attack();
         }
 
+        if (playerInGun && hasGun == false)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PlayerStats.hasGun = true;
+                equipmentDisplay.ChangeCurrentEquip(1);
+                gun.SetActive(true);
+                sword.SetActive(false);
+                Using = "gun";
+                gunGround.SetActive(false);
+                pickupWeapon.gunDestroyed();
+
+            }
+
+        }
+        if (playerInSword && hasSword == false)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PlayerStats.hasSword = true;
+                equipmentDisplay.currentEquip = 2;
+                sword.SetActive(true);
+                gun.SetActive(false);
+                Using = "sword";
+                swordGround.SetActive(false);
+                pickupWeapon.MeleeDestroyed();
+            }
+        }
+
     }
 
     //Static function for adding health to the player (send it negative value to subtract health)
     public static void AddHealth(int amt)
     {
+        if (isInvincible)
+        {
+            if (amt > 0)
+            {
+                playerHealth += amt;
+            }
+        }
+        else
+        {
         playerHealth += amt;
+        }
     }
 
     //We die like men, here are the attacking scripts as well.
@@ -131,6 +191,36 @@ public class PlayerStats : MonoBehaviour
         currentBullet.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 700);
         Destroy(currentBullet, 3);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("WHO HATH ENTERED");
+            if (other.gameObject.CompareTag("Melee"))
+            {
+            print("ahh.. tis a sword");
+            playerInSword = true;
+            }
+            if (other.gameObject.CompareTag("Ranged"))
+            {
+            print("ahh.. tis a gun");
+            playerInGun = true;          
+        }
+            if (other.gameObject.CompareTag("EscapeTree"))
+        {
+            SceneManager.LoadScene("Victory Scene 1");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Melee"))
+        {
+            playerInSword = false;
+        }
+        if (other.gameObject.CompareTag("Ranged"))
+        {
+            playerInGun = false;
+        }
     }
 
 }
