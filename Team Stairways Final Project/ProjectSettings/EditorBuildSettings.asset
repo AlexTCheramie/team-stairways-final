@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Levels/Floor One.unity
     guid: c9aad734c6078f24c9976c7532ab0415
   - enabled: 1
+    path: Assets/Scenes/Game Levels/Menu Scenes/Dead Screen 2.unity
+    guid: adfd3868f73648949ac3c2abf1916381
+  - enabled: 1
+    path: Assets/Scenes/Game Levels/Menu Scenes/Victory Scene 1.unity
+    guid: f09e01e62d4d6664b90e861f8a2f3e38
+  - enabled: 1
     path: Assets/Scenes/Game Design/AI Build and Controls.unity
     guid: 4f28ef9add953ca4199ec7eacf6a57c4
   m_configObjects: {}
