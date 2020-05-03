@@ -33,7 +33,7 @@ public class Menu_Scene_Changer : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        SceneManager.LoadScene("Dead Screen");
+        SceneManager.LoadScene("Dead Screen 2");
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class Menu_Scene_Changer : MonoBehaviour
     /// </summary>
     public void Victory()
     {
-        SceneManager.LoadScene("Victory Scene");
+        SceneManager.LoadScene("Victory Scene 1");
     }
 
 
