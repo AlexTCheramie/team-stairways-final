@@ -72,14 +72,14 @@ public class PlayerStats : MonoBehaviour
                 Using = "sword";
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        /*if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             equipmentDisplay.ChangeCurrentEquip(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             equipmentDisplay.ChangeCurrentEquip(4);
-        }
+        }*/
         
         if (Input.GetKeyDown(KeyCode.Mouse0) && isAttacking == false)
         {

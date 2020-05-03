@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class equipmentDisplay : MonoBehaviour
 {
     public Image[] equipment;
-    public Sprite equip1;       //sword pic
-    public Sprite equip2;       //gun pic
-    public Sprite equip3;       //robot arms pic
-    public Sprite equip4;       //wand pic
+    //public Sprite equip1;       //ranged pic
+    //public Sprite equip2;       //melee pic
+    //public Sprite equip3;       //robot arms pic
+    //public Sprite equip4;       //wand pic
 
     public static int currentEquip;
 
@@ -32,15 +32,19 @@ public class equipmentDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 1; i < equipment.Length; i++)
+        if (currentEquip == 2)
+        {
+            print("IM 2");
+        }
+        for (int i = 1; i <= equipment.Length; i++)
         {
             if (i == (currentEquip))
             {
-                equipment[i].enabled = true;
+                equipment[i-1].enabled = true;
             }
             else
             {
-                equipment[i].enabled = false;
+                equipment[i-1].enabled = false;
             }
         }
     }
@@ -48,7 +52,7 @@ public class equipmentDisplay : MonoBehaviour
     //Call this when the player changes equipment
     public static void ChangeCurrentEquip(int val)
     {
-        if ((val <= 4) && (val >= 1))
+        if ((val <= 2) && (val >= 1))
         {
             currentEquip = val;
         }
