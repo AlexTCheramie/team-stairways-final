@@ -206,6 +206,10 @@ public class PlayerStats : MonoBehaviour
             print("ahh.. tis a gun");
             playerInGun = true;          
         }
+            if (other.gameObject.CompareTag("EscapeTree"))
+        {
+            SceneManager.LoadScene("Victory Scene 1");
+        }
     }
     private void OnTriggerExit(Collider other)
     {
