@@ -24,8 +24,8 @@ public class OpenDoor : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 nextRoom.SetActive(true);
-                interactUI.buttonDestroyed();
                 doorToOpen.GetComponent<Animator>().enabled = true;
+                interactUI.buttonDestroyed();
             }
         }
     }
