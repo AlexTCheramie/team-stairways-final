@@ -31,7 +31,6 @@ public class BearAI : MonoBehaviour {
     protected Enemy2State state = Enemy2State.DEFAULT;    //init state in FSM is Default
     protected Vector3 destination = new Vector3(0, 0, 0);   //initial destination is the zero vector
 
-
     public int enemyHealth = 12;
 
     //Particle Sys. Explosion and blood spatter
@@ -47,15 +46,19 @@ public class BearAI : MonoBehaviour {
     private AudioSource growl;
     private AudioSource attackNoise;
     private AudioSource deathSound;
+    private Animator bearAnim;
+    private bool isRunning = true;
+    private bool isAttacking = false;
+    private int attackNum = 0;
 
     // Start is called before the first frame update
     void Awake() {
         player = GameObject.FindWithTag("Player");
         agent = this.GetComponent<NavMeshAgent>();  //gets the NavMeshAgent component
         blood = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
-
+        bearAnim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
-        //growl = GameObject.Find("Growl").GetComponent<AudioSource>();
+        
         attackNoise = transform.Find("Attack").GetComponent<AudioSource>(); //.GetComponentInChildren<AudioSource>();
         deathSound = transform.Find("DeathSound").GetComponent<AudioSource>(); //.GetChild(8).GetComponentInChildren<AudioSource>();
         growl = transform.Find("Growl").GetComponent<AudioSource>(); //.GetChild(7).GetComponentInChildren<AudioSource>();
@@ -98,6 +101,10 @@ public class BearAI : MonoBehaviour {
                 break;
             //Moving state controls random movement
             case Enemy2State.MOVING:
+                isRunning = true;
+                isAttacking = false;
+                BearAnimations(isRunning, isAttacking);
+
                 //Debug.Log("Dest = " + destination);
                 //when enemy is < 5 from the random distance, change destination again (done in Default state)
                 if (Vector3.Distance(transform.position, destination) < 5) {
@@ -117,6 +124,9 @@ public class BearAI : MonoBehaviour {
                 break;
             //state that chases the player
             case Enemy2State.CHASE:
+                isRunning = true;
+                isAttacking = false;
+                BearAnimations(isRunning, isAttacking);
                 //FindObjectOfType<AudioManager>().Play("chase");
                 //if the distance b/w the enemy and player exceeds the chase distance, switch to Default state
                 if (Vector3.Distance(transform.position, player.transform.position) > chaseDistance) {
@@ -136,7 +146,9 @@ public class BearAI : MonoBehaviour {
             //state where the enemy attacks the player
             case Enemy2State.ATTACK:
                 //FindObjectOfType<AudioManager>().Play("shoot");
-
+                isRunning = false;
+                isAttacking = true;
+                BearAnimations(isRunning, isAttacking);
                 if (Vector3.Distance(transform.position, player.transform.position) > attackDistance) {
                     //FindObjectOfType<AudioManager>().Play("get back");
                     state = Enemy2State.CHASE;
@@ -175,10 +187,6 @@ public class BearAI : MonoBehaviour {
                 growl.Play();
                 if (enemyHealth <= 0) {
                     killCount++;
-                    //energy.addScore(10);
-                    
-                    //EnemyShoot[] allShots = gameObject.GetComponentsInChildren<EnemyShoot>();
-                    //foreach (EnemyShoot c in allShots) c.enabled = false;
 
                     // Disable all Renderers and Colliders
                     Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
@@ -234,5 +242,15 @@ public class BearAI : MonoBehaviour {
 
     private void OnDestroy() {
         //energy.addScore(10);
+    }
+
+    void BearAnimations(bool run, bool attack) {
+        if(run == true) {
+            bearAnim.SetBool("isRunning", run);
+        }
+
+        if(attack == true) {
+
+        }
     }
 }

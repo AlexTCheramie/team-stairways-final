@@ -182,24 +182,10 @@ public class EnemyAI : MonoBehaviour
         if (col.gameObject.CompareTag("PlayerAtk"))
         {
             enemyHealth--;
-            //FindObjectOfType<AudioManager>().Play("SThit");
-            if (enemyHealth == 2)
-            {
-                //FindObjectOfType<AudioManager>().Play("ST2hitleft");
-            }
-            if(enemyHealth == 1)
-            {
-                //FindObjectOfType<AudioManager>().Play("ST1hitleft");
-            }
-            
 
             if(enemyHealth <= 0)
             {
                 killCount++;
-                //energy.addScore(10);
-
-                //EnemyShoot[] allShots = gameObject.GetComponentsInChildren<EnemyShoot>();
-                //foreach (EnemyShoot c in allShots) c.enabled = false;
                 
                 // Disable all Renderers and Colliders
                 Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
