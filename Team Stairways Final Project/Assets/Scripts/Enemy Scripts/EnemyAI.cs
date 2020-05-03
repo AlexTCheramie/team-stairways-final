@@ -36,7 +36,6 @@ public class EnemyAI : MonoBehaviour
     ParticleSystem blood;
     bool spatterStarted = false;     //says whether the explosion has started or not (prevents repeats)
     
-
     Bat_Bite mouth;
     public float biteTime = 1.0f;
     public float chewTime = 1.0f;
@@ -44,13 +43,11 @@ public class EnemyAI : MonoBehaviour
     public int killCount = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = GameObject.FindWithTag("Player");
         //assigns anything with the tag "Player" in the scene to the object "player"
 
-        //firePoint = gameObject.GetComponentInChildren<EnemyShoot>() ;
-        
         agent = this.GetComponent<NavMeshAgent>();  //gets the NavMeshAgent component
 
         blood = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
@@ -182,15 +179,6 @@ public class EnemyAI : MonoBehaviour
         if (col.gameObject.CompareTag("PlayerAtk"))
         {
             enemyHealth--;
-            //FindObjectOfType<AudioManager>().Play("SThit");
-            if (enemyHealth == 2)
-            {
-                //FindObjectOfType<AudioManager>().Play("ST2hitleft");
-            }
-            if(enemyHealth == 1)
-            {
-                //FindObjectOfType<AudioManager>().Play("ST1hitleft");
-            }
             
 
             if(enemyHealth <= 0)

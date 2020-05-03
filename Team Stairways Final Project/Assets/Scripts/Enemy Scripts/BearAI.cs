@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;     //enables the project to use Unity AI library
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 /// <summary>
 /// The following script is derived from the enemy script given from 
 /// CMPS 327 and the Star Wars game
+/// Website: https://docs.unity3d.com/ScriptReference/SceneManagement.Scene-name.html (used to help me know what scene I am in)
 /// </summary>
 
 //FSM States for the enemy
@@ -29,29 +32,33 @@ public class BearAI : MonoBehaviour {
     protected Vector3 destination = new Vector3(0, 0, 0);   //initial destination is the zero vector
 
 
-    public int enemyHealth = 10;
+    public int enemyHealth = 12;
 
     //Particle Sys. Explosion and blood spatter
     ParticleSystem blood;
     bool spatterStarted = false;     //says whether the explosion has started or not (prevents repeats)
 
-
     Bear_Attack attack;
     public float biteTime = 1.0f;
     public float chewTime = 1.0f;
-
     public int killCount = 0;
+    Scene currentScene;
+
+    private AudioSource growl;
+    private AudioSource attackNoise;
+    private AudioSource deathSound;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         player = GameObject.FindWithTag("Player");
-        //assigns anything with the tag "Player" in the scene to the object "player"
-
-        //firePoint = gameObject.GetComponentInChildren<EnemyShoot>() ;
-
         agent = this.GetComponent<NavMeshAgent>();  //gets the NavMeshAgent component
-
         blood = GetComponentInChildren<ParticleSystem>();   //gets particle sys. component attached to the enemy
+
+        currentScene = SceneManager.GetActiveScene();
+        //growl = GameObject.Find("Growl").GetComponent<AudioSource>();
+        attackNoise = transform.GetChild(9).GetComponentInChildren<AudioSource>();
+        deathSound = transform.GetChild(8).GetComponentInChildren<AudioSource>();
+        growl = transform.GetChild(7).GetComponentInChildren<AudioSource>();
     }
 
     //creates a random position for the enemy to be in or go to
@@ -161,37 +168,32 @@ public class BearAI : MonoBehaviour {
     /// </summary>
     /// <param name="col"></param>
     void OnTriggerEnter(Collider col) {
-        if (col.gameObject.CompareTag("PlayerAtk")) {
-            enemyHealth--;
-            //FindObjectOfType<AudioManager>().Play("SThit");
-            if (enemyHealth == 2) {
-                //FindObjectOfType<AudioManager>().Play("ST2hitleft");
-            }
-            if (enemyHealth == 1) {
-                //FindObjectOfType<AudioManager>().Play("ST1hitleft");
-            }
+        if(currentScene.name == "Boss Room") {
+            if (col.gameObject.CompareTag("PlayerAtk")) {
+                enemyHealth--;
+                //FindObjectOfType<AudioManager>().Play("SThit");
+                growl.Play();
+                if (enemyHealth <= 0) {
+                    killCount++;
+                    //energy.addScore(10);
+                    
+                    //EnemyShoot[] allShots = gameObject.GetComponentsInChildren<EnemyShoot>();
+                    //foreach (EnemyShoot c in allShots) c.enabled = false;
 
+                    // Disable all Renderers and Colliders
+                    Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
+                    foreach (Renderer c in allRenderers) c.enabled = false;
 
-            if (enemyHealth <= 0) {
-                killCount++;
-                //energy.addScore(10);
+                    Collider[] allColliders = gameObject.GetComponentsInChildren<Collider>();
+                    foreach (Collider c in allColliders) c.enabled = false;
 
-                //EnemyShoot[] allShots = gameObject.GetComponentsInChildren<EnemyShoot>();
-                //foreach (EnemyShoot c in allShots) c.enabled = false;
+                    //StartCoroutine(PlayAndDestroy(myaudio.clip.length));
 
-                // Disable all Renderers and Colliders
-                Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
-                foreach (Renderer c in allRenderers) c.enabled = false;
-
-                Collider[] allColliders = gameObject.GetComponentsInChildren<Collider>();
-                foreach (Collider c in allColliders) c.enabled = false;
-
-                //StartCoroutine(PlayAndDestroy(myaudio.clip.length));
-
-                //gameObject.GetComponent<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
-                gameObject.GetComponentInChildren<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
-                StartExplosion();   //makes explosion occur when the enemy is hit
-                StartCoroutine(PlayAndDestroy(chewTime));
+                    //gameObject.GetComponent<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
+                    gameObject.GetComponentInChildren<ParticleSystemRenderer>().enabled = true;   //needed or the particle sys. won't show up
+                    StartExplosion();   //makes explosion occur when the enemy is hit
+                    StartCoroutine(PlayAndDestroy(chewTime));
+                }
             }
         }
     }
@@ -207,6 +209,7 @@ public class BearAI : MonoBehaviour {
     /// ...
     /// </summary>
     private void StartExplosion() {
+        deathSound.Play();
         if (spatterStarted == false) {
             blood.Play();
             spatterStarted = true;

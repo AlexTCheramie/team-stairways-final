@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Bear_Attack : MonoBehaviour
 {
+    AudioSource chomp;
+    float biteTime = 2.0f;
+    float chewTime = 2.0f;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void BearClaw() {
+    void Start() {
+        chomp = GetComponent<AudioSource>();
 
     }
 
-    void BearBite() {
-
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
+            chomp.Play();
+            PlayerStats.playerHealth--;
+        }
     }
 }
