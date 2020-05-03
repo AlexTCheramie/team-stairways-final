@@ -14,6 +14,10 @@ public class CreditHelp : MonoBehaviour
     //timer and how long the credits will last (seconds)
     public float timer = 0;
     public float creditLength = 45;
+
+    //pages for info screen
+    public GameObject[] pages;
+    private int currentPage;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +39,37 @@ public class CreditHelp : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(0))
         {
-            if (helpOpen)
+            /*if (helpOpen)
             {
                 HelpMenuClose();
-            }
+            }*/
             if (creditOpen)
             {
                 CreditScreenClose();
+            }
+        }
+
+        if (helpOpen)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                HelpMenuClose();
+                pages[currentPage].SetActive(false);
+                currentPage = 0;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (currentPage < 2)
+                {
+                    pages[currentPage].SetActive(false);
+                    currentPage++;
+                    pages[currentPage].SetActive(true);
+                } else
+                {
+                    pages[currentPage].SetActive(false);
+                    currentPage = 0;
+                    HelpMenuClose();
+                }
             }
         }
 
@@ -51,6 +79,8 @@ public class CreditHelp : MonoBehaviour
     {
         helpMenu.SetActive(true);
         helpOpen = true;
+        pages[0].SetActive(true);
+        currentPage = 0;
     }
 
     public void CreditScreen()
