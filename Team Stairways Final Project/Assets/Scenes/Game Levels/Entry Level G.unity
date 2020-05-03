@@ -1818,6 +1818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BEAR_BLK
       objectReference: {fileID: 0}
+    - target: {fileID: 5372232695930878805, guid: 44c00d3e668db1a4b900267c0cc0f086,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8995193638357305670, guid: 44c00d3e668db1a4b900267c0cc0f086,
         type: 3}
       propertyPath: m_LocalPosition.x

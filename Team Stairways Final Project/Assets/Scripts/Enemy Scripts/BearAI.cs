@@ -56,9 +56,9 @@ public class BearAI : MonoBehaviour {
 
         currentScene = SceneManager.GetActiveScene();
         //growl = GameObject.Find("Growl").GetComponent<AudioSource>();
-        attackNoise = transform.GetChild(9).GetComponentInChildren<AudioSource>();
-        deathSound = transform.GetChild(8).GetComponentInChildren<AudioSource>();
-        growl = transform.GetChild(7).GetComponentInChildren<AudioSource>();
+        attackNoise = transform.Find("Attack").GetComponent<AudioSource>(); //.GetComponentInChildren<AudioSource>();
+        deathSound = transform.Find("DeathSound").GetComponent<AudioSource>(); //.GetChild(8).GetComponentInChildren<AudioSource>();
+        growl = transform.Find("Growl").GetComponent<AudioSource>(); //.GetChild(7).GetComponentInChildren<AudioSource>();
     }
 
     //creates a random position for the enemy to be in or go to
