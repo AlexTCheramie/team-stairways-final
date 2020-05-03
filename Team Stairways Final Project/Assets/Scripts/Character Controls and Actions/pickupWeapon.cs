@@ -25,7 +25,6 @@ public class pickupWeapon : MonoBehaviour
         {
             print("gun is gone and imma FADE");
             fade();
-            fade();
             gunGone = false;
         }
         if (meleeGone)

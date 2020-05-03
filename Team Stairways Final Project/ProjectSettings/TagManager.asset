@@ -16,6 +16,7 @@ TagManager:
   - PlayerAtk
   - Melee
   - Ranged
+  - EscapeTree
   layers:
   - Default
   - TransparentFX
