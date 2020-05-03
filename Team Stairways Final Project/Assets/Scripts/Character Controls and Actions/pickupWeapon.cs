@@ -3,41 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class interactUI : MonoBehaviour
+public class pickupWeapon : MonoBehaviour
 {
     public TextMeshProUGUI interactText;            //"Press E to interact"
     public bool isfaded;                            //faded state
     public float fadeTime = 0.4f;                   //time it takes to fade in/out
-    public static bool buttonGone = false;
+    public static bool gunGone = false;
+    public static bool meleeGone = false;
 
 
     private void Start()
     {
-        buttonGone = false;
+        gunGone = false;
+        meleeGone = false;
         interactText.gameObject.GetComponent<CanvasGroup>().alpha = 0;  //make sure the text is not there on start
     }
 
     private void Update()
     {
-        if (buttonGone)
+        if (gunGone)
         {
+            print("gun is gone and imma FADE");
             fade();
-            buttonGone = false;
+            gunGone = false;
+        }
+        if (meleeGone)
+        {
+            print("sword is gone and imma FADE");
+            fade();
+            meleeGone = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Button"))
+        if (other.CompareTag("Melee"))
         {
-            print("button here");
+            fade();
+        }
+        if (other.CompareTag("Ranged"))
+        {
             fade();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Button"))
+        if (other.CompareTag("Melee"))
+        {
+            fade();
+        }
+        if (other.CompareTag("Ranged"))
         {
             fade();
         }
@@ -58,7 +74,7 @@ public class interactUI : MonoBehaviour
     {
         float counter = 0f;
 
-        while(counter < fadeTime)
+        while (counter < fadeTime)
         {
             counter += Time.deltaTime;
             canvGroup.alpha = Mathf.Lerp(start, end, counter / fadeTime);
@@ -66,8 +82,13 @@ public class interactUI : MonoBehaviour
         }
     }
 
-    public static void buttonDestroyed()
+    public static void gunDestroyed()
     {
-        buttonGone = true;
+        gunGone = true;
+    }
+
+    public static void MeleeDestroyed()
+    {
+        meleeGone = true;
     }
 }

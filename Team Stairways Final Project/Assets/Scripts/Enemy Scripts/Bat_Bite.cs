@@ -21,7 +21,8 @@ public class Bat_Bite : MonoBehaviour
         if(other.tag == "Player")
         {
             chomp.Play();
-            PlayerStats.playerHealth--;  
+            //PlayerStats.playerHealth--;
+            PlayerStats.AddHealth(-1);
         }
     }
 

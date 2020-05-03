@@ -32,10 +32,6 @@ public class equipmentDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentEquip == 2)
-        {
-            print("IM 2");
-        }
         for (int i = 1; i <= equipment.Length; i++)
         {
             if (i == (currentEquip))
