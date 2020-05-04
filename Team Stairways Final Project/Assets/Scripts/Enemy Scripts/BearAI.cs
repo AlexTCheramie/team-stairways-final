@@ -43,13 +43,12 @@ public class BearAI : MonoBehaviour {
     public int killCount = 0;
     Scene currentScene;
 
-    private AudioSource growl;
-    private AudioSource attackNoise;
-    private AudioSource deathSound;
+    //private AudioSource growl;
+    //private AudioSource attackNoise;
+    //private AudioSource deathSound;
     private Animator bearAnim;
     private bool isRunning = true;
     private bool isAttacking = false;
-    private int attackNum = 0;
 
     // Start is called before the first frame update
     void Awake() {
@@ -59,9 +58,9 @@ public class BearAI : MonoBehaviour {
         bearAnim = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
         
-        attackNoise = transform.Find("Attack").GetComponent<AudioSource>(); //.GetComponentInChildren<AudioSource>();
-        deathSound = transform.Find("DeathSound").GetComponent<AudioSource>(); //.GetChild(8).GetComponentInChildren<AudioSource>();
-        growl = transform.Find("Growl").GetComponent<AudioSource>(); //.GetChild(7).GetComponentInChildren<AudioSource>();
+        //attackNoise = transform.Find("Attack").GetComponent<AudioSource>(); //.GetComponentInChildren<AudioSource>();
+        //deathSound = transform.Find("DeathSound").GetComponent<AudioSource>(); //.GetChild(8).GetComponentInChildren<AudioSource>();
+        //growl = transform.Find("Growl").GetComponent<AudioSource>(); //.GetChild(7).GetComponentInChildren<AudioSource>();
     }
 
     //creates a random position for the enemy to be in or go to
@@ -184,7 +183,7 @@ public class BearAI : MonoBehaviour {
             if (col.gameObject.CompareTag("PlayerAtk")) {
                 enemyHealth--;
                 //FindObjectOfType<AudioManager>().Play("SThit");
-                growl.Play();
+                //growl.Play();
                 if (enemyHealth <= 0) {
                     killCount++;
 
@@ -217,7 +216,7 @@ public class BearAI : MonoBehaviour {
     /// ...
     /// </summary>
     private void StartExplosion() {
-        deathSound.Play();
+        //deathSound.Play();
         if (spatterStarted == false) {
             blood.Play();
             spatterStarted = true;
@@ -250,7 +249,13 @@ public class BearAI : MonoBehaviour {
         }
 
         if(attack == true) {
-
+            int value = Random.Range(0, 10);
+            if((value % 2) == 1) {
+                bearAnim.SetBool("Attack1", true);
+            } else {
+                bearAnim.SetBool("Attack2", true);
+            }
+            
         }
     }
 }

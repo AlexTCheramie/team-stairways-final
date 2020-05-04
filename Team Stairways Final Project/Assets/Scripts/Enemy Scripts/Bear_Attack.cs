@@ -15,9 +15,18 @@ public class Bear_Attack : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        /*if(biteTime > Time.time) {
+            if (other.tag == "Player") {
+                chomp.Play();
+                PlayerStats.AddHealth(-1);
+            }
+        }
+        biteTime += chewTime;
+        chewTime += biteTime + Time.time;*/
+
         if (other.tag == "Player") {
             chomp.Play();
-            PlayerStats.playerHealth--;
+            PlayerStats.AddHealth(-1);
         }
     }
 }
