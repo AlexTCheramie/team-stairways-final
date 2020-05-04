@@ -84,6 +84,7 @@ public class Character_Movement : MonoBehaviour
     void CharAnim(float h, float v) {
         bool runnning = h != 0f || v != 0f;
         charAnimations.SetBool("isRunning",runnning);
+
     }
 
     private void OnTriggerEnter(Collider other) {
