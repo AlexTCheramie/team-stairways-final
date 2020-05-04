@@ -25,7 +25,7 @@ public class Character_Movement : MonoBehaviour
     {
         playerRigidbody = GetComponent <Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
-        charAnimations = GetComponentInChildren<Animator>();
+        //charAnimations = GetComponentInChildren<Animator>();
         charAnimations = transform.Find("The Adventurer Blake").GetComponent<Animator>();
         //charAnimations.SetBool("isRunning", false);
         //inventory code
@@ -39,7 +39,7 @@ public class Character_Movement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         newCharacterMovement(h, v);
         followMouse();
-        //CharAnim(h, v);
+        CharAnim(h, v);
 
     }
 
@@ -85,7 +85,7 @@ public class Character_Movement : MonoBehaviour
     void CharAnim(float h, float v) {
         bool runnning = h != 0f || v != 0f;
         charAnimations.SetBool("isRunning",runnning);
-
+        //charAnimations.SetBool("Shooting", false);
     }
 
     private void OnTriggerEnter(Collider other) {
