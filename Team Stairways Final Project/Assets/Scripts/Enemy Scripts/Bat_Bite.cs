@@ -13,7 +13,6 @@ public class Bat_Bite : MonoBehaviour
     void Start()
     {
         chomp = GetComponent<AudioSource>();
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +20,7 @@ public class Bat_Bite : MonoBehaviour
         if(other.tag == "Player")
         {
             chomp.Play();
+            FindObjectOfType<AudioManager>().Play("Hit");
             //PlayerStats.playerHealth--;
             PlayerStats.AddHealth(-1);
         }

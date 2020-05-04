@@ -165,6 +165,7 @@ public class PlayerStats : MonoBehaviour
         if(hasSword == true && Using == "sword")
         {
             swordbox.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("Spear");
             StartCoroutine(SwordHitboxActive(0.5f));
         }
 
@@ -190,6 +191,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void Shoot()
     {
+        FindObjectOfType<AudioManager>().Play("Gun");
         GameObject currentBullet = Instantiate(bullet, emitter.transform.position, emitter.transform.rotation) as GameObject;
         currentBullet.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 700);
