@@ -30,6 +30,18 @@ public class PlayerStats : MonoBehaviour
     public GameObject emitter;
     public static string Using = "";
 
+    Animator charAnimations;
+    public bool shoot =false;
+    public bool swordHit = false;
+    bool run;
+
+    Character_Movement charMoveScript;
+
+    private void Awake() {
+        charMoveScript = GetComponent<Character_Movement>();
+        run = charMoveScript.runnning;
+        charAnimations = transform.Find("The Adventurer Blake").GetComponent<Animator>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +57,8 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        run = charMoveScript.runnning;
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             if (!isInvincible)
@@ -138,7 +152,7 @@ public class PlayerStats : MonoBehaviour
                 pickupWeapon.MeleeDestroyed();
             }
         }
-
+        
     }
 
     //Static function for adding health to the player (send it negative value to subtract health)
@@ -166,12 +180,14 @@ public class PlayerStats : MonoBehaviour
         {
             swordbox.SetActive(true);
             StartCoroutine(SwordHitboxActive(0.5f));
+            AttackAnimation(shoot, swordHit);
         }
 
         else if(hasGun == true && Using == "gun")
         {
             Shoot();
             StartCoroutine(Cooldown(gunCooldown));
+            AttackAnimation(shoot, swordHit);
         }
 
     }
@@ -224,6 +240,18 @@ public class PlayerStats : MonoBehaviour
         {
             playerInGun = false;
         }
+    }
+
+    void AttackAnimation(bool gunShot, bool swordSlice) {
+        /*if(gunShot == true && swordSlice == false) {
+            charAnimations.SetBool("Shooting", gunShot);
+            charAnimations.SetBool("isHitting", swordSlice);
+        } else {
+            charAnimations.SetBool("Shooting", gunShot);
+            charAnimations.SetBool("isHitting", swordSlice);
+        }*/
+        charAnimations.SetBool("Shooting", gunShot);
+        charAnimations.SetBool("isHitting", swordSlice);
     }
 
 }

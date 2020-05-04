@@ -19,15 +19,22 @@ public class Character_Movement : MonoBehaviour
     private InventoryHelp inventory;
     //private Weapons equipedWeapons;
 
+    PlayerStats playerStatsScript;
     Animator charAnimations;
+    public bool runnning;
+    bool gunShot;
+    bool swordSlice;
 
     private void Awake()
     {
+        playerStatsScript = GetComponent<PlayerStats>();
         playerRigidbody = GetComponent <Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
         //charAnimations = GetComponentInChildren<Animator>();
         charAnimations = transform.Find("The Adventurer Blake").GetComponent<Animator>();
         //charAnimations.SetBool("isRunning", false);
+        swordSlice = playerStatsScript.swordHit;
+        gunShot = playerStatsScript.shoot;
         //inventory code
         inventory = new InventoryHelp();
         UI_Weapons.SetInventory(inventory);
@@ -35,6 +42,9 @@ public class Character_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        swordSlice = playerStatsScript.swordHit;
+        gunShot = playerStatsScript.shoot;
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         newCharacterMovement(h, v);
@@ -46,7 +56,7 @@ public class Character_Movement : MonoBehaviour
     /// <summary>
     /// CharacterMovement provides the character with basic movement controls
     /// </summary>
-    void CharacterMovement()
+    /*void CharacterMovement()
     {
         float x = Input.GetAxis("Horizontal");  //access the horizontal keys (left, right, a, d)
         float z = Input.GetAxis("Vertical");    //access the vertical keys (up, down, w, s)
@@ -58,7 +68,7 @@ public class Character_Movement : MonoBehaviour
         transform.position += transform.forward * z * moveSpeed * Time.deltaTime;
 
         transform.Rotate(turnVelocity); //rotates the player left and right
-    }
+    }*/
 
     void newCharacterMovement(float h, float v)
     {
@@ -83,12 +93,13 @@ public class Character_Movement : MonoBehaviour
     }
 
     void CharAnim(float h, float v) {
-        bool runnning = h != 0f || v != 0f;
+        runnning = h != 0f || v != 0f;
         charAnimations.SetBool("isRunning",runnning);
-        //charAnimations.SetBool("Shooting", false);
+        charAnimations.SetBool("Shooting", gunShot);
+        charAnimations.SetBool("isHitting", swordSlice);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    /*private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("RoomGreen")) {
             SceneManager.LoadScene("Entry Level G");
         }else if (other.gameObject.CompareTag("RoomRed")) {
@@ -102,5 +113,5 @@ public class Character_Movement : MonoBehaviour
         } else if (other.gameObject.CompareTag("RoomBonus")) {
             SceneManager.LoadScene("Bonus Room");
         }
-    }
+    }*/
 }

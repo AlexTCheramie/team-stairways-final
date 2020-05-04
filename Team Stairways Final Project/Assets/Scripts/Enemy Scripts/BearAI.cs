@@ -179,7 +179,7 @@ public class BearAI : MonoBehaviour {
     /// </summary>
     /// <param name="col"></param>
     void OnTriggerEnter(Collider col) {
-        if(currentScene.name == "Boss Room") {
+        //if(currentScene.name == "Boss Room") {
             if (col.gameObject.CompareTag("PlayerAtk")) {
                 enemyHealth--;
                 //FindObjectOfType<AudioManager>().Play("SThit");
@@ -202,7 +202,7 @@ public class BearAI : MonoBehaviour {
                     StartCoroutine(PlayAndDestroy(chewTime));
                 }
             }
-        }
+        //}
     }
 
     //this enables the audio to play even after the object gets destroyed
