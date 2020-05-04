@@ -26,7 +26,8 @@ public class Character_Movement : MonoBehaviour
         playerRigidbody = GetComponent <Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
         charAnimations = GetComponentInChildren<Animator>();
-
+        charAnimations = transform.Find("The Adventurer Blake").GetComponent<Animator>();
+        //charAnimations.SetBool("isRunning", false);
         //inventory code
         inventory = new InventoryHelp();
         UI_Weapons.SetInventory(inventory);
@@ -38,7 +39,7 @@ public class Character_Movement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         newCharacterMovement(h, v);
         followMouse();
-        
+        //CharAnim(h, v);
 
     }
 
