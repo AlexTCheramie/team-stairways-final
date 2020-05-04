@@ -22,8 +22,6 @@ public class OpenDoor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                FindObjectOfType<AudioManager>().Play("Button");
-                FindObjectOfType<AudioManager>().Play("Rock Moving");
                 gameObject.SetActive(false);
                 nextRoom.SetActive(true);
                 doorToOpen.GetComponent<Animator>().enabled = true;

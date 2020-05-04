@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
     //creates a random position for the enemy to be in or go to
     private Vector3 RandomPosition()
     {
-        return new Vector3(Random.Range(-10.0f, 10.0f), 0, Random.Range(-10.0f, 10.0f));
+        return new Vector3(Random.Range(-50.0f, 50.0f), 0, Random.Range(-50.0f, 50.0f));
         //y-coord will be 0 (not instantiating in the air)
     }
 
