@@ -14,7 +14,9 @@ public class PlayerStats : MonoBehaviour
     public static bool isAttacking = false;
     public bool playerInSword = false;
     public bool playerInGun = false;
+
     public float swordCooldown = 1.0f;
+    public float gunCooldown = 1.0f;
 
     public GameObject swordGround;
     public GameObject gunGround;
@@ -169,7 +171,7 @@ public class PlayerStats : MonoBehaviour
         else if(hasGun == true && Using == "gun")
         {
             Shoot();
-            StartCoroutine(Cooldown(1.0f));
+            StartCoroutine(Cooldown(gunCooldown));
         }
 
     }

@@ -221,7 +221,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6039791398924153193}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.99
+  m_Radius: 0.83
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -5125,8 +5125,8 @@ MonoBehaviour:
   chaseDistance: 20
   attackDistance: 15
   enemyHealth: 3
-  biteTime: 1
-  chewTime: 1
+  biteTime: 0.5
+  chewTime: 0.5
   killCount: 0
 --- !u!65 &1688253073
 BoxCollider:
@@ -5139,8 +5139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.69, y: 1.8399999, z: 1.9562302}
-  m_Center: {x: 0, y: 0.100000024, z: 0.6131151}
+  m_Size: {x: 1.69, y: 1.8399999, z: 1.1763521}
+  m_Center: {x: 0, y: 0.100000024, z: 0.22317599}
 --- !u!1001 &7742792756955514135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5156,7 +5156,7 @@ PrefabInstance:
     - target: {fileID: 3534400513511328299, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.047
+      value: 0.061
       objectReference: {fileID: 0}
     - target: {fileID: 3534400513511328299, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
@@ -5166,17 +5166,17 @@ PrefabInstance:
     - target: {fileID: 3534400513511328299, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22901002
+      value: 0.2656516
       objectReference: {fileID: 0}
     - target: {fileID: 3534400513511328299, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22900996
+      value: 0.26565155
       objectReference: {fileID: 0}
     - target: {fileID: 3534400513511328299, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22900996
+      value: 0.26565155
       objectReference: {fileID: 0}
     - target: {fileID: 4901355829456514162, guid: 03183ccadb93ce84e87926e93a1e139f,
         type: 3}
