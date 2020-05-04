@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     public static bool isAttacking = false;
     public bool playerInSword = false;
     public bool playerInGun = false;
+    public float swordCooldown = 1.0f;
 
     public GameObject swordGround;
     public GameObject gunGround;
@@ -183,7 +184,7 @@ public class PlayerStats : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         swordbox.SetActive(false);
-        StartCoroutine(Cooldown(1.0f));
+        StartCoroutine(Cooldown(swordCooldown));
     }
     public void Shoot()
     {
