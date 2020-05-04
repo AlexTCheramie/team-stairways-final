@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300273, g: 0.49219579, b: 0.5719249, a: 1}
+  m_IndirectSpecularColor: {r: 0.4430032, g: 0.49219626, b: 0.571926, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -121,7 +121,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: b95980262b39024468c4207ee03d5e2c, type: 2}
 --- !u!1 &624362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5075,7 +5075,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &168142072
 Transform:
@@ -5413,7 +5413,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &174886596
 Transform:
@@ -8754,7 +8754,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &269442753
 Transform:
@@ -12641,7 +12641,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &403575542
 Transform:
@@ -26294,7 +26294,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &817126241
 Transform:
@@ -43544,7 +43544,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1279023166
 Transform:
@@ -45621,7 +45621,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1330291296
 Transform:
@@ -46373,6 +46373,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180958614}
     m_Modifications:
+    - target: {fileID: 6039791398924153184, guid: 3495967db04e3d4468b471d3868686ec,
+        type: 3}
+      propertyPath: chaseDistance
+      value: 20.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6039791398924153185, guid: 3495967db04e3d4468b471d3868686ec,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -50455,7 +50460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439909509
 Transform:
   m_ObjectHideFlags: 0
@@ -63741,6 +63746,16 @@ PrefabInstance:
       propertyPath: gunGround
       value: 
       objectReference: {fileID: 661040897}
+    - target: {fileID: 2897441482048272143, guid: a196624d01ddd084d80c6aa02171b77d,
+        type: 3}
+      propertyPath: gunCooldown
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2897441482048272143, guid: a196624d01ddd084d80c6aa02171b77d,
+        type: 3}
+      propertyPath: swordCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2897441482048272145, guid: a196624d01ddd084d80c6aa02171b77d,
         type: 3}
       propertyPath: m_Name
